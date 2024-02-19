@@ -1,4 +1,24 @@
 hello
+The git push command is used to transfer or push the commit, which is made on a local
+branch in your computer to a remote repository like GitHub. The command used for pushing
+to GitHub is given below.
+git push 'remote_name' 'branch_name'
+git remote add origin 'your_url_name'
+git push -u origin master
+
+The git pull command is used to fetch and download content from a remote
+repository and immediately update the local repository to match the content. Merging remote
+upstream changes into your local repository is a common task in Git-based collaboration
+workflows.
+git pull origin master
+Git clone is a Git command-line utility that is used to target an existing repository and
+create a clone, or copy of the target repository. The command for cloning the repository is:
+git clone <repository-link>
+
+git commit -m "Initial commit"
+This creates a new commit with the given message. A commit is like a
+save or snapshot of your entire project. You can now push, or upload, it to a
+remote repository, and later you can jump back to it if necessary.
 
 
 ///////// git reset
