@@ -1,1 +1,1032 @@
 hello
+
+
+///////// git reset
+
+$ git init
+Initialized empty Git repository in C:/Users/shreyamatti/OneDrive/Desktop/git2/.git/
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ touch a.c b.c c.c
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git add .
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git commit -m "abc"
+[main (root-commit) db8dc3c] abc
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 a.c
+ create mode 100644 b.c
+ create mode 100644 c.c
+
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ touch x.c y.c z.c
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git add .
+
+
+
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git commit -m "xyz"
+[main dc833bc] xyz
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 x.c
+ create mode 100644 y.c
+ create mode 100644 z.c
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git log --oneline
+dc833bc (HEAD -> main) xyz
+db8dc3c abc
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git reset --soft
+db8dc3c
+bash: db8dc3c: command not found
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git reset --soft dc833bc
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git status
+On branch main
+nothing to commit, working tree clean
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git log --oneline
+dc833bc (HEAD -> main) xyz
+db8dc3c abc
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git reset --soft db8dc3c
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   x.c
+        new file:   y.c
+        new file:   z.c
+
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git log --oneline
+db8dc3c (HEAD -> main) abc
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ ls
+a.c  b.c  c.c  x.c  y.c  z.c
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git add .
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git commit -m "xyz again"
+[main 2da7e8d] xyz again
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 x.c
+ create mode 100644 y.c
+ create mode 100644 z.c
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git log --oneline
+2da7e8d (HEAD -> main) xyz again
+db8dc3c abc
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git reset --mixed db8dc3c
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git status
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        x.c
+        y.c
+        z.c
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ ls
+a.c  b.c  c.c  x.c  y.c  z.c
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git add .
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git commit -m "xyz again again"
+[main 1251672] xyz again again
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 x.c
+ create mode 100644 y.c
+ create mode 100644 z.c
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git log --oneline
+1251672 (HEAD -> main) xyz again again
+db8dc3c abc
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git reset --hard db8dc3c
+HEAD is now at db8dc3c abc
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ git log --oneline
+db8dc3c (HEAD -> main) abc
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$ ls
+a.c  b.c  c.c
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/git2 (main)
+$
+
+
+
+////////// git stash
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt
+$ git init
+Initialized empty Git repository in C:/Users/shreyamatti/OneDrive/Desktop/gitt/.git/
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ touch a.c b.c c.c
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git add .
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git commit -m "abc"
+[main (root-commit) 50c80c8] abc
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 a.c
+ create mode 100644 b.c
+ create mode 100644 c.c
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ touch x.c y.c z.c
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git add .
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   x.c
+        new file:   y.c
+        new file:   z.c
+
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash
+Saved working directory and index state WIP on main: 50c80c8 abc
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git status
+On branch main
+nothing to commit, working tree clean
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash list
+stash@{0}: WIP on main: 50c80c8 abc
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash show
+ x.c | 0
+ y.c | 0
+ z.c | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash apply
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   x.c
+        new file:   y.c
+        new file:   z.c
+
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   x.c
+        new file:   y.c
+        new file:   z.c
+
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash show
+ x.c | 0
+ y.c | 0
+ z.c | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash
+Saved working directory and index state WIP on main: 50c80c8 abc
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git status
+On branch main
+nothing to commit, working tree clean
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash pop
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   x.c
+        new file:   y.c
+        new file:   z.c
+
+Dropped refs/stash@{0} (48fe889ba9d8c15866acc50e13fcca934a6e86e1)
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   x.c
+        new file:   y.c
+        new file:   z.c
+
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash show
+ x.c | 0
+ y.c | 0
+ z.c | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash list
+stash@{0}: WIP on main: 50c80c8 abc
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash pop
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   x.c
+        new file:   y.c
+        new file:   z.c
+
+Dropped refs/stash@{0} (1cb74b7dbf8be71d0dc934f83d67aafa23242b2b)
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash show stash@{0}
+error: stash@{0} is not a valid reference
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash list
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash
+Saved working directory and index state WIP on main: 50c80c8 abc
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash list
+stash@{0}: WIP on main: 50c80c8 abc
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ touch a.txt b.txt c.txt
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git add .
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash
+Saved working directory and index state WIP on main: 50c80c8 abc
+g
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash list
+stash@{0}: WIP on main: 50c80c8 abc
+stash@{1}: WIP on main: 50c80c8 abc
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash show
+ a.txt | 0
+ b.txt | 0
+ c.txt | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash drop stash@{1}
+Dropped stash@{1} (63ebd28108a08dfa1c444218025cf5f605580a67)
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash list
+stash@{0}: WIP on main: 50c80c8 abc
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash clear
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git stash list
+
+
+
+
+/////////// git push
+
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt
+$ git clone https://github.com/smr29/practice.git
+Cloning into 'practice'...
+warning: You appear to have cloned an empty repository.
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt
+$ git remote add origin https://github.com/smr29/practice.git
+fatal: not a git repository (or any of the parent directories): .git
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt
+$ git pull origin main
+fatal: not a git repository (or any of the parent directories): .git
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt
+$ git init
+Initialized empty Git repository in C:/Users/shreyamatti/OneDrive/Desktop/gittt/.git/
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt (main)
+$ git remote add origin https://github.com/smr29/practice.git
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt (main)
+$ git pull origin main
+remote: Enumerating objects: 16, done.
+remote: Counting objects: 100% (16/16), done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 16 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (16/16), 5.33 KiB | 147.00 KiB/s, done.
+From https://github.com/smr29/practice
+ * branch            main       -> FETCH_HEAD
+ * [new branch]      main       -> origin/main
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt (main)
+$ ls
+hello.txt  hi.txt  practice/
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt (main)
+$ touch t1.txt
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt (main)
+$ git add .
+error: 'practice/' does not have a commit checked out
+fatal: adding files failed
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt (main)
+$ dir -d practice
+practice
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt (main)
+$ cd practice
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt/practice (main)
+$ git add .
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt/practice (main)
+$ git commit -m "t1.txt"
+On branch main
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt/practice (main)
+$ ls
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt/practice (main)
+$ cd ..
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt (main)
+$ git branch
+* main
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt (main)
+$ git add .
+error: 'practice/' does not have a commit checked out
+fatal: adding files failed
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt (main)
+$ git status
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        practice/
+        t1.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt (main)
+$ rmdir practice
+rmdir: failed to remove 'practice': Directory not empty
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt (main)
+$ rmdir practice/
+rmdir: failed to remove 'practice/': Directory not empty
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt (main)
+$ cd practice
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt/practice (main)
+$ ls
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt/practice (main)
+$ rmdir
+rmdir: missing operand
+Try 'rmdir --help' for more information.
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt/practice (main)
+$ git status
+On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt/practice (main)
+$ cd ..
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt (main)
+$ git status
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        t1.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt (main)
+$ git add .
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt (main)
+$ git commit -m "t1.txt"
+[main b1ade6f] t1.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 t1.txt
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gittt (main)
+$ git push -u origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 288 bytes | 288.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/smr29/practice.git
+   fa9fe89..b1ade6f  main -> main
+branch 'main' set up to track 'origin/main'.
+
+
+
+
+
+//////////git pull
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt
+$ git init
+Initialized empty Git repository in C:/Users/shreyamatti/OneDrive/Desktop/gitt/.git/
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git add .
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git commit -m "initial commit"
+On branch main
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ touch a.c
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git add .
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git commit -m "initial commit"
+[main (root-commit) fe94cf7] initial commit
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 a.c
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git remote add https://github.com/smr29/sfdsf.git
+usage: git remote add [<options>] <name> <url>
+
+    -f, --[no-]fetch      fetch the remote branches
+    --[no-]tags           import all tags and associated objects when fetching
+                          or do not fetch any tag at all (--no-tags)
+    -t, --[no-]track <branch>
+                          branch(es) to track
+    -m, --[no-]master <branch>
+                          master branch
+    --[no-]mirror[=(push|fetch)]
+                          set up remote as a mirror to push to or fetch from
+
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git remote add origin https://github.com/smr29/sfdsf.git
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git remote -v
+origin  https://github.com/smr29/sfdsf.git (fetch)
+origin  https://github.com/smr29/sfdsf.git (push)
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git push -u origin main
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 203 bytes | 203.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/smr29/sfdsf.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (main)
+$ git checkout -b branch1
+Switched to a new branch 'branch1'
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (branch1)
+$ git push -u origin branch1
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'branch1' on GitHub by visiting:
+remote:      https://github.com/smr29/sfdsf/pull/new/branch1
+remote:
+To https://github.com/smr29/sfdsf.git
+ * [new branch]      branch1 -> branch1
+branch 'branch1' set up to track 'origin/branch1'.
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (branch1)
+$ touch hi.txt
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (branch1)
+$ git add .
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (branch1)
+$ git commit -m "hi.txt committed"
+[branch1 93350cc] hi.txt committed
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 hi.txt
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (branch1)
+$ git push -u origin branch1
+To https://github.com/smr29/sfdsf.git
+ ! [rejected]        branch1 -> branch1 (fetch first)
+error: failed to push some refs to 'https://github.com/smr29/sfdsf.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (branch1)
+$ git pull origin branch1
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 927 bytes | 51.00 KiB/s, done.
+From https://github.com/smr29/sfdsf
+ * branch            branch1    -> FETCH_HEAD
+   fe94cf7..7aff9d3  branch1    -> origin/branch1
+hint: Diverging branches can't be fast-forwarded, you need to either:
+hint:
+hint:   git merge --no-ff
+hint:
+hint: or:
+hint:
+hint:   git rebase
+hint:
+hint: Disable this message with "git config advice.diverging false"
+fatal: Not possible to fast-forward, aborting.
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (branch1)
+$ ls
+a.c  hi.txt
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (branch1)
+$ git rebase main
+Current branch branch1 is up to date.
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (branch1)
+$ git pull origin branch1
+From https://github.com/smr29/sfdsf
+ * branch            branch1    -> FETCH_HEAD
+hint: Diverging branches can't be fast-forwarded, you need to either:
+hint:
+hint:   git merge --no-ff
+hint:
+hint: or:
+hint:
+hint:   git rebase
+hint:
+hint: Disable this message with "git config advice.diverging false"
+fatal: Not possible to fast-forward, aborting.
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (branch1)
+$ git merge --no-ff
+Merge made by the 'ort' strategy.
+ hello.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello.txt
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (branch1)
+$ git pull origin branch1
+From https://github.com/smr29/sfdsf
+ * branch            branch1    -> FETCH_HEAD
+Already up to date.
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (branch1)
+$ ls
+a.c  hello.txt  hi.txt
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (branch1)
+$ git push -u origin branch1
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 531 bytes | 531.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/smr29/sfdsf.git
+   7aff9d3..7f01c16  branch1 -> branch1
+branch 'branch1' set up to track 'origin/branch1'.
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/gitt (branch1)
+$
+
+
+
+
+
+
+//////////// git revert rebase
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by
+$ git init
+Initialized empty Git repository in C:/Users/shreyamatti/OneDrive/Desktop/by/.git/
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ vi hello.txt
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git add .
+warning: in the working copy of 'hello.txt', LF will be replaced by CRLF the next time Git touches it
+g
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git commit -m "hello says hello"
+[main (root-commit) 39e01a7] hello says hello
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello.txt
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git log --oneline
+39e01a7 (HEAD -> main) hello says hello
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ vi bye.txt
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git add .
+warning: in the working copy of 'bye.txt', LF will be replaced by CRLF the next time Git touches it
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git commit -m "bye"
+[main 72753ab] bye
+ 1 file changed, 1 insertion(+)
+ create mode 100644 bye.txt
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git log --oneline
+72753ab (HEAD -> main) bye
+39e01a7 hello says hello
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ vi hello.txt
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git add .
+warning: in the working copy of 'hello.txt', LF will be replaced by CRLF the next time Git touches it
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git commit -m "hello says hello again"
+[main 888aed7] hello says hello again
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git log --oneline
+888aed7 (HEAD -> main) hello says hello again
+72753ab bye
+39e01a7 hello says hello
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git revert 39e01a7
+CONFLICT (modify/delete): hello.txt deleted in (empty tree) and modified in HEAD.  Version HEAD of hello.txt left in tree.
+error: could not revert 39e01a7... hello says hello
+hint: After resolving the conflicts, mark them with
+hint: "git add/rm <pathspec>", then run
+hint: "git revert --continue".
+hint: You can instead skip this commit with "git revert --skip".
+hint: To abort and get back to the state before "git revert",
+hint: run "git revert --abort".
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main|REVERTING)
+$ git revert --continue
+error: Committing is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+U       hello.txt
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main|REVERTING)
+$ git revert
+usage: git revert [--[no-]edit] [-n] [-m <parent-number>] [-s] [-S[<keyid>]] <commit>...
+   or: git revert (--continue | --skip | --abort | --quit)
+
+    --quit                end revert or cherry-pick sequence
+    --continue            resume revert or cherry-pick sequence
+    --abort               cancel revert or cherry-pick sequence
+    --skip                skip current commit and continue
+    --[no-]cleanup <mode> how to strip spaces and #comments from message
+    -n, --no-commit       don't automatically commit
+    --commit              opposite of --no-commit
+    -e, --[no-]edit       edit the commit message
+    -s, --[no-]signoff    add a Signed-off-by trailer
+    -m, --[no-]mainline <parent-number>
+                          select mainline parent
+    --[no-]rerere-autoupdate
+                          update the index with reused conflict resolution if possible
+    --[no-]strategy <strategy>
+                          merge strategy
+    -X, --[no-]strategy-option <option>
+                          option for merge strategy
+    -S, --[no-]gpg-sign[=<key-id>]
+                          GPG sign commit
+    --[no-]reference      use the 'reference' format to refer to commits
+
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main|REVERTING)
+$ git revert
+39e01a7
+usage: git revert [--[no-]edit] [-n] [-m <parent-number>] [-s] [-S[<keyid>]] <commit>...
+   or: git revert (--continue | --skip | --abort | --quit)
+
+    --quit                end revert or cherry-pick sequence
+    --continue            resume revert or cherry-pick sequence
+    --abort               cancel revert or cherry-pick sequence
+    --skip                skip current commit and continue
+    --[no-]cleanup <mode> how to strip spaces and #comments from message
+    -n, --no-commit       don't automatically commit
+    --commit              opposite of --no-commit
+    -e, --[no-]edit       edit the commit message
+    -s, --[no-]signoff    add a Signed-off-by trailer
+    -m, --[no-]mainline <parent-number>
+                          select mainline parent
+    --[no-]rerere-autoupdate
+                          update the index with reused conflict resolution if possible
+    --[no-]strategy <strategy>
+                          merge strategy
+    -X, --[no-]strategy-option <option>
+                          option for merge strategy
+    -S, --[no-]gpg-sign[=<key-id>]
+                          GPG sign commit
+    --[no-]reference      use the 'reference' format to refer to commits
+
+bash: 39e01a7: command not found
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main|REVERTING)
+$ git revert 39e01a7
+error: Reverting is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: revert failed
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main|REVERTING)
+$ git status
+On branch main
+You are currently reverting commit 39e01a7.
+  (fix conflicts and run "git revert --continue")
+  (use "git revert --skip" to skip this patch)
+  (use "git revert --abort" to cancel the revert operation)
+
+Unmerged paths:
+  (use "git restore --staged <file>..." to unstage)
+  (use "git add/rm <file>..." as appropriate to mark resolution)
+        deleted by them: hello.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main|REVERTING)
+$ git add hello.txt
+warning: in the working copy of 'hello.txt', LF will be replaced by CRLF the next time Git touches it
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main|REVERTING)
+$ git commit -m "idk"
+On branch main
+You are currently reverting commit 39e01a7.
+  (all conflicts fixed: run "git revert --continue")
+  (use "git revert --skip" to skip this patch)
+  (use "git revert --abort" to cancel the revert operation)
+
+nothing to commit, working tree clean
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main|REVERTING)
+$ git status
+On branch main
+You are currently reverting commit 39e01a7.
+  (all conflicts fixed: run "git revert --continue")
+  (use "git revert --skip" to skip this patch)
+  (use "git revert --abort" to cancel the revert operation)
+
+nothing to commit, working tree clean
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main|REVERTING)
+$ git revert 39e01a7
+CONFLICT (modify/delete): hello.txt deleted in (empty tree) and modified in HEAD.  Version HEAD of hello.txt left in tree.
+error: could not revert 39e01a7... hello says hello
+hint: After resolving the conflicts, mark them with
+hint: "git add/rm <pathspec>", then run
+hint: "git revert --continue".
+hint: You can instead skip this commit with "git revert --skip".
+hint: To abort and get back to the state before "git revert",
+hint: run "git revert --abort".
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main|REVERTING)
+$ git revert --skip
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git status
+On branch main
+nothing to commit, working tree clean
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git revert 72753ab
+[main 14aabc4] Revert "bye"
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 bye.txt
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git log --oneline
+14aabc4 (HEAD -> main) Revert "bye"
+888aed7 hello says hello again
+72753ab bye
+39e01a7 hello says hello
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ ls
+hello.txt
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ cat hello.txt
+hello again
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git checkout branch1
+error: pathspec 'branch1' did not match any file(s) known to git
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git checkout -b branch1
+Switched to a new branch 'branch1'
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (branch1)
+$ touch c.
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (branch1)
+$ git add .
+error: open("c."): No such file or directory
+error: unable to index file 'c.'
+fatal: adding files failed
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (branch1)
+$ touch c.c
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (branch1)
+$ git add .
+error: open("c."): No such file or directory
+error: unable to index file 'c.'
+fatal: adding files failed
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (branch1)
+$ rm c.
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (branch1)
+$ ls
+c.c  hello.txt
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (branch1)
+$ git add .
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (branch1)
+$ git commit -m "sdf"
+[branch1 4d5295d] sdf
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 c.c
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (branch1)
+$ git log --oneline
+4d5295d (HEAD -> branch1) sdf
+14aabc4 (main) Revert "bye"
+888aed7 hello says hello again
+72753ab bye
+39e01a7 hello says hello
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (branch1)
+$ git checkout main
+Switched to branch 'main'
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ touch d.c
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git add .
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git commit -m "sdfsdf"
+[main 5b1d867] sdfsdf
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 d.c
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git log --oneline
+5b1d867 (HEAD -> main) sdfsdf
+14aabc4 Revert "bye"
+888aed7 hello says hello again
+72753ab bye
+39e01a7 hello says hello
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git checkout branch1
+Switched to branch 'branch1'
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (branch1)
+$ git log --oneline
+4d5295d (HEAD -> branch1) sdf
+14aabc4 Revert "bye"
+888aed7 hello says hello again
+72753ab bye
+39e01a7 hello says hello
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (branch1)
+$ git rebase main
+Successfully rebased and updated refs/heads/branch1.
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (branch1)
+$ git log --oneline
+073b610 (HEAD -> branch1) sdf
+5b1d867 (main) sdfsdf
+14aabc4 Revert "bye"
+888aed7 hello says hello again
+72753ab bye
+39e01a7 hello says hello
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (branch1)
+$ git checkout main
+Switched to branch 'main'
+g
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$ git log --oneline
+5b1d867 (HEAD -> main) sdfsdf
+14aabc4 Revert "bye"
+888aed7 hello says hello again
+72753ab bye
+39e01a7 hello says hello
+
+shreyamatti@Shreya MINGW64 ~/OneDrive/Desktop/by (main)
+$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
